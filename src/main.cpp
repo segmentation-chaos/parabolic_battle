@@ -1,6 +1,10 @@
 #include <ctime>
+#include <stdio.h>
+#include <iostream>
 
 #include "system.hpp"
+
+using namespace std;
 
 int main(int argc, char **argv)
 {
