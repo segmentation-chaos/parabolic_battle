@@ -1,6 +1,4 @@
 #include <ctime>
-#include <stdio.h>
-#include <iostream>
 
 #include "system.hpp"
 
