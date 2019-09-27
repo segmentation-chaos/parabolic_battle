@@ -2,8 +2,6 @@
 
 #include "system.hpp"
 
-using namespace std;
-
 int main(int argc, char **argv)
 {
 	int running = 1;
