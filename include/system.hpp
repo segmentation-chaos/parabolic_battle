@@ -1,9 +1,9 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+#include "canvas.hpp"
 #include "map.hpp"
 #include "object.hpp"
-#include "canvas.hpp"
 
 class System
 {
