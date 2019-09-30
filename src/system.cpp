@@ -28,7 +28,7 @@ int System::run()
 			if(
 				1 < bullets[i].pos_x ||
 				0 > bullets[i].pos_x ||
-				0 > bullets[i].pos_y
+				map.height > bullets[i].pos_y
 			)
 			{
 				bullets.erase(bullets.begin() + i);
