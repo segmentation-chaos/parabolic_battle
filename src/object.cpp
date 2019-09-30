@@ -15,7 +15,7 @@ int Object::shoot(double vel_init, double angle_init, int orientation)
 int Object::move()
 {
     double g = 9.806;
-    double dt = 1e-3; 
+    double dt = 1e-1/60.;
     pos_x += vel_x * dt;
     pos_y += vel_y * dt - g * dt * dt / 2.0;
     vel_y -= g*dt; 

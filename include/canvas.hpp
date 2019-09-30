@@ -11,6 +11,7 @@ class Canvas
 		SDL_Window* display;
 		SDL_Renderer* renderer;
 		SDL_Event event;
+
 	public:
 		Canvas();
 		Canvas(const Canvas&);
@@ -18,6 +19,7 @@ class Canvas
 		~Canvas();
 		int init(unsigned int, unsigned int, const char *);
 		int handle_events();
+		int get_mouse_position(double *, double *);
 		int clear(
 			unsigned short int = 255,
 			unsigned short int = 255,
@@ -28,6 +30,13 @@ class Canvas
 			double,
 			double,
 			int,
+			unsigned short int = 0,
+			unsigned short int = 0,
+			unsigned short int = 0
+		);
+		int draw_bullet(
+			double,
+			double,
 			unsigned short int = 0,
 			unsigned short int = 0,
 			unsigned short int = 0
