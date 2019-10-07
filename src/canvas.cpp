@@ -80,13 +80,35 @@ int Canvas::handle_events()
 			{
 				return 0;
 			}
-			else if(SDLK_SPACE == event.key.keysym.sym)
+		}
+		else if(SDL_MOUSEBUTTONDOWN == event.type)
+		{
+			if(SDL_BUTTON_LEFT == event.button.button)
 			{
 				return 1;
 			}
 		}
+		else if(SDL_MOUSEBUTTONUP == event.type)
+		{
+			if(SDL_BUTTON_LEFT == event.button.button)
+			{
+				return 2;
+			}
+		}
 	}
 	return -1;
+}
+
+int Canvas::get_mouse_position(double *x, double *y)
+{
+	int x_raw, y_raw;
+
+	SDL_GetMouseState(&x_raw, &y_raw);
+
+	*x = (double) x_raw / width;
+	*y = 1. - (double) y_raw / height;
+
+	return 0;
 }
 
 int Canvas::clear(
@@ -123,7 +145,7 @@ int Canvas::draw_player(
 	body.w = 12;
 	body.h = 10;
 	body.x = (int) (x * width) - body.w / 2;
-	body.y = (int) (y * height) - body.h;
+	body.y = (int) ((1 - y) * height) - body.h;
 
 	gun.w = 4;
 	gun.h = 3;
@@ -144,6 +166,27 @@ int Canvas::draw_player(
 	return 0;
 }
 
+int Canvas::draw_bullet(
+	double x,
+	double y,
+	unsigned short int r,
+	unsigned short int g,
+	unsigned short int b
+)
+{
+	SDL_Rect body;
+
+	body.w = 3;
+	body.h = 3;
+	body.x = (int) (x * width) - body.w / 2;
+	body.y = (int) ((1 - y) * height) - body.h;
+
+	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
+	SDL_RenderFillRect(renderer, &body);
+
+	return 0;
+}
+
 int Canvas::draw_map(
 	double h,
 	unsigned short int r,
@@ -152,7 +195,7 @@ int Canvas::draw_map(
 )
 {
 	SDL_SetRenderDrawColor(renderer, r, g, b, 255);
-	SDL_RenderDrawLine(renderer, 0, h * height, width, h * height);
+	SDL_RenderDrawLine(renderer, 0, (1 - h) * height, width, (1 - h) * height);
 
 	return 0;
 }
