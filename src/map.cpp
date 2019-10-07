@@ -2,16 +2,12 @@
 
 Map::Map()
 {
-	srand(time(NULL)); // Temporary
-
-//	Map(1000, 1000);
-
-	height = (double) rand() / RAND_MAX / 2. + 0.5;
+	Map(1000, 1000);
 }
 
 /**
-* Creates a matrix grid indexed with elements
-* 	Index:
+* Creates the matrix grid
+* 	Elements index:
 * 	 > empty: 0
 * 	 > terrain: 1
 * 	 > player: obj.ndx
@@ -31,7 +27,7 @@ Map::Map(int h, int w)
 		grid[i] = new int [height];
 	}
 
-	// Set map to zero
+	// Set grid to zero
 	for(int i = 0; i < width; i++)
 	{
 		for(int j = 0; j < height; j++)
@@ -40,7 +36,7 @@ Map::Map(int h, int w)
 		}
 	}
 
-	// Set map terrain: flat line (index 1 for terrain)
+	// Set map terrain: flat line
 	int map_lvl = gridfy_y((double) rand() / RAND_MAX / 2.0);
 	for(int i = 0; i < map_lvl; i++)
 	{
@@ -50,9 +46,9 @@ Map::Map(int h, int w)
 		}
 	}
 
-	/**
-	*  Future features: 
-	*	>> Terrain generator
+	/** Future features: 
+	*	>> Check map_lvl for boundaries hit
+	*   >> Terrain generator
 	*	>> Different terrain types (sand, dirt, water ...)
 	*/
 }
@@ -62,18 +58,18 @@ int Map::collision(double x, double y)
 	return grid[gridfy_x(x)][gridfy_y(y)];
 }
 
-// Sets obj index to grid
-/**
+/** Sets an object (obj) index to the grid
 *  >> For now, it only sets the type index (obj.ndx), not ID
 *  >> It does not consider objects dimensions (size_x, size_y)
 */ 
 int Map::set(Object obj)
 {
 	grid[gridfy_x(obj.pos_x)][gridfy_y(obj.pos_y)] = obj.ndx;
-	/**
-	*  Future feature:
+	
+	/** Future feature:
 	* 	>> Distinguish player/bullet ID
 	*/ 
+
 	return 0;
 }
 
@@ -89,7 +85,7 @@ int Map::gridfy_y(double y)
 	return (int) height * y;
 }
 
-// Converts a double [0,1 width position to grid index
+// Converts a double [0,1] width position to grid index
 int Map::gridfy_x(double x)
 {
 	return (int) width * x;
