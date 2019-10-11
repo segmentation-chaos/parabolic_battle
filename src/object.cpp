@@ -2,13 +2,10 @@
 
 #include <math.h>
 
-int Object::shoot(double vel_init, double angle_init, int orientation)
+int Object::shoot(double vel_init, double angle_init)
 {
-    if(orientation == -1){
-        angle_init = 180 - angle_init;
-    }
-    vel_x = vel_init * cos(M_PI * angle_init / 180.0);
-    vel_y = vel_init * sin(M_PI * angle_init / 180.0);
+    vel_x = vel_init * cos(angle_init);
+    vel_y = vel_init * sin(angle_init);
     return 0;
 }
 
