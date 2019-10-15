@@ -49,8 +49,7 @@ int System::run()
 		bullets.back().pos_y = player_1.pos_y;
 		bullets.back().shoot(
 			vel_gauge,
-			atan2((y - player_1.pos_y), (x - player_1.pos_x)),
-			0
+			atan2((y - player_1.pos_y), (x - player_1.pos_x))
 		);
 		vel_gauge = 2.;
 	}
