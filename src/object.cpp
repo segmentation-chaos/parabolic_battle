@@ -1,7 +1,5 @@
 #include "object.hpp"
 
-#include <math.h>
-
 int Object::shoot(double vel_init, double angle_init)
 {
     vel_x = vel_init * cos(angle_init);
