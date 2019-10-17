@@ -4,12 +4,12 @@ VPATH=./src
 
 TARGETS=parabolic_battle
 
-DEPENDENCIES=main.cpp canvas.cpp system.cpp map.cpp
+DEPENDENCIES=main.cpp canvas.cpp system.cpp map.cpp object.cpp
 
 build: $(TARGETS)
 
 $(TARGETS): $(DEPENDENCIES) -lSDL2
-	$(CXX) $(CXXFLAGS) -o parabolic_battle $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 .PHONY: clean
 clean:
