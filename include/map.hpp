@@ -14,6 +14,7 @@ class Map
 		int width;
 		Map();
 		Map(int, int);
+		~Map();
 		int collision(double, double);
 		int set(Object);
 		int unset();
