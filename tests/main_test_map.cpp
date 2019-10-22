@@ -18,9 +18,9 @@ using namespace std;
 int main(int argc, char **argv)
 {
 
-	int wdth = 20;
-    int hght = 20;
-    Map map(wdth, hght);
+    int width = 20;
+    int height = 20;
+    Map map(width, height);
     
     // Test matrix construction
 	for (int i = map.width - 1; i >= 0; i--)
