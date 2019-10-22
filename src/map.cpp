@@ -53,6 +53,15 @@ Map::Map(int h, int w)
 	*/
 }
 
+Map::~Map()
+{
+	for(int i = 0; i < width; i++)
+	{
+		delete [] grid[i];	
+	}
+	delete [] grid;
+}
+
 int Map::collision(double x, double y)
 {
 	return grid[gridfy_x(x)][gridfy_y(y)];
